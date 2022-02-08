@@ -21,9 +21,6 @@ $ python task_5_1.py
 решить без использования условия if.
 """
 
-c = input ("введите имя устройства: ")
-print (c)
-
 london_co = {
     "r1": {
         "location": "21 New Globe Walk",
@@ -50,5 +47,6 @@ london_co = {
     },
 }
 
-b = london_co [c]
-print(b)
+device = input("Введите имя устройства: ")
+
+print(london_co[device])

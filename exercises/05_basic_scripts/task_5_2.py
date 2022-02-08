@@ -30,3 +30,47 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+inpup = input("введите сеть и маску " )
+inpup = inpup.split("/")
+ip = inpup[0]
+mask = inpup[1]
+
+ip = ip.split(".")
+a1,a2,a3,a4 = ip
+a11=int(a1)
+a22=int(a2)
+a33=int(a3)
+a44=int(a4)
+
+med = int(mask)
+mze = 32 - med
+bi1= med*"1"
+ostat1 = med % 8
+osnov1 = int(med / 8)
+bi2 = mze*"0"
+ostat0 = mze % 8
+osnov0 = int(mze / 8)
+
+e1 = "11111111\n" * osnov1
+e0 = "00000000\n"* osnov0
+e10 = ("1"*ostat1)+("0"*ostat0)
+e3 = e1+e10+"\n"+e0
+
+
+e4=e3.strip()
+e5 = e4.split()
+
+m1,m2,m3,m4 = e5
+m11=int(m1,2)
+m22=int(m2,2)
+m33=int(m3,2)
+m44=int(m4,2)
+
+mask2 = '/'+str(mask)
+ip_template = "Network:\n{0:<8}     {1:<8}      {2:<8}      {3:<8}\n{0:08b}     {1:08b}     {2:08b}     {3:08b}"
+
+print(ip_template.format(a11, a22, a33, a44))
+
+ip_templatqe ="\n{0:<8}     {1:<8}    {2:<8}    {3:<8}\n{0:08b}  {1:08b}    {2:08b}     {3:08b}"
+print("Mask:")
+print(mask2,ip_templatqe.format(m11, m22, m33, m44))
