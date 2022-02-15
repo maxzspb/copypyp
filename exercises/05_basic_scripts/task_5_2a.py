@@ -49,3 +49,98 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+inpup = input("введите сеть и маску " )
+inpup = inpup.split("/")
+ip = inpup[0]
+mask = inpup[1]
+
+ip = ip.split(".")
+a1,a2,a3,a4 = ip
+a11=int(a1)
+a22=int(a2)
+a33=int(a3)
+a44=int(a4)
+
+bin_a1 = (bin(a11)[2::])
+bin_a2 = (bin(a22)[2::])
+bin_a3 = (bin(a33)[2::])
+bin_a4 = (bin(a44)[2::])
+
+b11 = len(bin_a1)
+b22 = len(bin_a2)
+b33 = len(bin_a3)
+b44 = len(bin_a4)
+
+bin_a11 = (8 - b11)*'0' + bin_a1+'.'
+bin_a22 = (8 - b22)*'0' + bin_a2+'.'
+bin_a33 = (8 - b33)*'0' + bin_a3+'.'
+bin_a44 = (8 - b44)*'0' + bin_a4+'.'
+
+
+bin_ipp=bin_a11+bin_a22+bin_a33+bin_a44
+
+
+med = int(mask)
+mze = 32 - med
+bi1= med*"1"
+ostat1 = med % 8
+osnov1 = int(med / 8)
+bi2 = mze*"0"
+ostat0 = mze % 8
+osnov0 = int(mze / 8)
+
+med22=med+3
+bin_ipp1= bin_ipp[0:med22] + '0'*mze
+
+
+
+
+
+bin_ipp2 = bin_ipp1.split('.')
+
+
+n1,n2,n3,n4 = bin_ipp2
+
+
+
+
+n11=int(n1,2)
+n22=int(n2,2)
+n33=int(n3,2)
+n44=int(n4,2)
+
+
+
+
+
+
+e1 = "11111111\n" * osnov1
+e0 = "00000000\n"* osnov0
+e10 = ("1"*ostat1)+("0"*ostat0)
+e3 = e1+e10+"\n"+e0
+
+
+
+e4=e3.strip()
+e5 = e4.split()
+
+
+m1,m2,m3,m4 = e5
+m11=int(m1,2)
+m22=int(m2,2)
+m33=int(m3,2)
+m44=int(m4,2)
+
+
+
+mask2 = '/'+str(mask)
+ip_template = "Network:\n{0:<8}     {1:<8}      {2:<8}      {3:<8}\n{0:08b}     {1:08b}     {2:08b}     {3:08b}"
+
+
+
+ip_templatqe ="\n{0:<8}     {1:<8}    {2:<8}    {3:<8}\n{0:08b}  {1:08b}    {2:08b}     {3:08b}"
+
+print(ip_template.format(n11, n22, n33, n44))
+print("Mask:")
+print(mask2,ip_templatqe.format(m11, m22, m33, m44))
+
